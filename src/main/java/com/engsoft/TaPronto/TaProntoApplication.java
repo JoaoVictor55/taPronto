@@ -30,7 +30,7 @@ public class TaProntoApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(TaProntoApplication.class, args);
-		System.out.println(funcionarioRepository.findAll());
+		//System.out.println(funcionarioRepository.findAll());
 
 	}
 
