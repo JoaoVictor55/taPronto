@@ -1,24 +1,24 @@
 package com.engsoft.TaPronto.security;
 
-import com.engsoft.TaPronto.dominio.usuario.Usuario;
-import com.engsoft.TaPronto.repository.usuario.UsuarioRepository;
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Funcionario;
+import com.engsoft.TaPronto.repository.empreendimentoFuncionario.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class UsuarioRepositoryServices implements UserDetailsService {
+public class FuncionarioRepositoryServices implements UserDetailsService {
 
-    private UsuarioRepository usuarioRepository;
+    private FuncionarioRepository funcionarioRepository;
 
     @Autowired
-    public UsuarioRepositoryServices(UsuarioRepository usuarioRepository){
-        this.usuarioRepository = usuarioRepository;
+    public FuncionarioRepositoryServices(FuncionarioRepository funcionarioRepository){
+        this.funcionarioRepository = funcionarioRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByNomeUsuario(username);
+        Funcionario usuario = funcionarioRepository.findFuncionarioByDcrEmail(username);
 
         if(usuario == null){
             throw new UsernameNotFoundException("Username: "+username+" wasn't found");
