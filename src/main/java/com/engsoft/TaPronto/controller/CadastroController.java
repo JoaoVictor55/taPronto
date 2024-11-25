@@ -33,6 +33,10 @@ public class CadastroController {
             localidades.add(localidade);
         });
 
+        Usuario usuario = new Usuario();
+     //   usuario.setSenha("jao");
+        model.addAttribute("usuario", usuario);
+
         model.addAttribute("localidades", localidades);
 
         return "cadastro";
