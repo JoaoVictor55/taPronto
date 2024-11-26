@@ -10,19 +10,17 @@ import java.util.Optional;
 @SpringBootApplication
 public class TaProntoApplication implements WebMvcConfigurer {
 
-
 	public static void main(String[] args) {
 
 		SpringApplication.run(TaProntoApplication.class, args);
 
-
 	}
 
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry){
+	public void addViewControllers(ViewControllerRegistry registry) {
 
-		registry.addViewController("/").setViewName("home"); //exibe a tela inicial
-		registry.addViewController("/login"); //exibe a tela de login
+		registry.addViewController("/").setViewName("home"); // exibe a tela inicial
+		registry.addViewController("/login"); // exibe a tela de login
 	}
 
 }

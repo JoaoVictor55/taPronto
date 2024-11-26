@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
     <title>TaPronto - Login</title>
 </head>
-<body>
-    <header>
 
+<body class="principalLogin">
+    <header class="cabecalho">
+        <h1>Entrar</h1>
     </header>
 
-    <main>
-        <div th:src="${error}">Unable to login, check your username and passowrd</div>
-        <form method="post" th:action="@{/login}" id="loginForm">
-            <label for="dcrEmail">Email:</label>
-            <input type="email" name="dcrEmail" id="dcrEmail"/><br/>
+    <main class="principal__container">
 
-            <label for="senhaFuncionario">Senha:</label>
-            <input type="password" name="senhaFuncionario" id="senhaFuncionario"/><br/>
+        <form method="post" th:action="@{/login}" id="loginForm" class="loginForm">
+            <div class="input-container">
+                <label class="tituloForm" for="dcrEmail">Email:</label>
+            </div>
+            <div class="input-wrapper">
+                <input class="inputForm" type="email" name="dcrEmail" id="dcrEmail" /><br />
+            </div>
 
-            <input type="submit" value="login"/>
+            <label class="tituloForm" for="senhaFuncionario">Senha:</label>
+            <input class="inputForm" type="password" name="senhaFuncionario" id="senhaFuncionario" /><br />
+
+            <input type="submit" value="login" />
         </form>
+
+        <div th:src="${error}">Unable to login, check your username and passowrd</div>
     </main>
 
     <footer>

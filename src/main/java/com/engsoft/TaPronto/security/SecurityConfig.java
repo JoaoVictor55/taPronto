@@ -22,7 +22,7 @@ public class SecurityConfig {
     FuncionarioRepositoryServices funcionarioRepositoryServices;
 
     @Autowired
-    public SecurityConfig(FuncionarioRepositoryServices funcionarioRepositoryServices){
+    public SecurityConfig(FuncionarioRepositoryServices funcionarioRepositoryServices) {
 
         this.funcionarioRepositoryServices = funcionarioRepositoryServices;
     }
@@ -33,7 +33,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
@@ -43,25 +44,36 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity, MvcRequestMatcher.Builder mvcRequestMatcher) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity, MvcRequestMatcher.Builder mvcRequestMatcher)
+            throws Exception {
 
-        /*return httpSecurity.authorizeHttpRequests((authorize)->{
-            authorize.anyRequest().permitAll();
-        }).build();*/
+        /*
+         * return httpSecurity.authorizeHttpRequests((authorize)->{
+         * authorize.anyRequest().permitAll();
+         * }).build();
+         */
 
-        return httpSecurity.authorizeHttpRequests((authorize)->{
-            authorize.requestMatchers(mvcRequestMatcher.pattern("/")).permitAll()
-                    .requestMatchers(mvcRequestMatcher.pattern("/cadastro")).permitAll();
-        }).formLogin((formlogin)->{
-            formlogin.loginPage("/login")
-                    .loginProcessingUrl("/login")
-                    .usernameParameter("dcrEmail")
-                    .passwordParameter("senhaFuncionario")
-                    .defaultSuccessUrl("/")
-                    .failureForwardUrl("/erro")
-                    .permitAll();
-
-        }).build();/**/
+        return httpSecurity
+                .authorizeHttpRequests((authorize) -> {
+                    // Libera acesso aos arquivos estáticos
+                    authorize
+                            .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                            .requestMatchers(mvcRequestMatcher.pattern("/")).permitAll()
+                            .requestMatchers(mvcRequestMatcher.pattern("/cadastro")).permitAll()
+                            .anyRequest().authenticated(); // Requer autenticação para todas as outras rotas
+                })
+                .formLogin((formlogin) -> {
+                    formlogin
+                            .loginPage("/login")
+                            .loginProcessingUrl("/login")
+                            .usernameParameter("dcrEmail")
+                            .passwordParameter("senhaFuncionario")
+                            .defaultSuccessUrl("/")
+                            .failureForwardUrl("/erro")
+                            .permitAll();
+                })
+                .logout((logout) -> logout.permitAll()) // Libera logout para todos
+                .build();
     }
 
 }

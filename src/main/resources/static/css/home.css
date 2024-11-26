@@ -1,0 +1,35 @@
+.principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.imagem__logo{
+    width: 100%;
+}
+.sub_titulo{
+    color: var(--cor-de-fonte);
+    font-family: var(--fonte-secundaria);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+.botao__comecar{
+    text-decoration: none;
+    color: var(--cor-de-fundo);
+    background-color: var(--cor-de-fundo2);
+    padding: 1.5rem 4rem;
+    border-radius: 2rem;
+    font-family: var(--fonte-secundaria);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-top: 10rem;
+
+}
+.rodape{
+    width: 100%;
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    object-fit: cover;
+}
