@@ -1,8 +1,12 @@
 package com.engsoft.TaPronto.controller;
 
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.FormularioRegistro;
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Funcionario;
 import com.engsoft.TaPronto.dominio.endereco.Localidade;
+import com.engsoft.TaPronto.repository.empreendimentoFuncionario.FuncionarioRepository;
 import com.engsoft.TaPronto.repository.endereco.LocalidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,52 +21,31 @@ import java.util.List;
 @RequestMapping("/cadastro")
 public class CadastroController {
 
-    private LocalidadeRepository localidadeRepository;
+    private FuncionarioRepository funcionarioRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    CadastroController(LocalidadeRepository localidadeRepository){
+    CadastroController(FuncionarioRepository funcionarioRepository, PasswordEncoder passwordEncoder){
 
-        this.localidadeRepository = localidadeRepository;
+        this.funcionarioRepository = funcionarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
+
+
 
     @GetMapping
     public String exibirInfoCadastro(Model model){
-
-        List<Localidade> localidades = new ArrayList<>();
-        this.localidadeRepository.findAll().forEach(localidade -> {
-            localidades.add(localidade);
-        });
-
-        Usuario usuario = new Usuario();
-     //   usuario.setSenha("jao");
-        model.addAttribute("usuario", usuario);
-
-        model.addAttribute("localidades", localidades);
 
         return "cadastro";
     }
 
     @PostMapping
-    public String login(@ModelAttribute Usuario usuario){
+    public String processarCadastro(FormularioRegistro formularioRegistro){
 
+        //System.out.println(formularioRegistro);
 
+        this.funcionarioRepository.save(formularioRegistro.paraFuncionario(this.passwordEncoder));
 
-        //Usuario usuario = (Usuario) model.getAttribute("usuario");
-        System.out.println(usuario.getSenha());
-
-        return "cadastro";
+        return "redirect:/";
     }
-
-    public class Usuario{
-        private String senha;
-
-        public void setSenha(String senha){
-            this.senha = senha;
-        }
-
-        public String getSenha(){
-            return senha;
-        }
-    }
-
 }

@@ -9,9 +9,27 @@
     <body>
         <h1>Cadastre-se</h1>
 
-        <form method="POST" th:object="${usuario}">
-            <input th:field="*{senha}" type="text">
-            <input type="submit" value="submit form">
+        <form method="POST" th:action="@{cadastro}">
+
+            <label for="nomeFuncionario">Nome:</label>
+            <input type="text" id="nomeFuncionario" name="nomeFuncionario"/><br/>
+
+            <label for="dcrEmail">Email:</label>
+            <input type="text" id="dcrEmail" name="dcrEmail"/><br/>
+
+            <label for="dcrCpf">CPF:</label>
+            <input type="text" id="dcrCpf" name="dcrCpf"/><br/>
+
+            <label for="numTelefone">Telefone:</label>
+            <input type="text" id="numTelefone" name="numTelefone"/><br/>
+
+            <label for="senhaFuncionario">Senha:</label>
+            <input type="password" id="senhaFuncionario" name="senhaFuncionario"/><br/>
+
+            <label for="senhaConfirma">Confirme a senha:</label>
+            <input type="password" id="senhaConfirma" name="senhaConfirma"/><br/>
+
+            <input type="submit">Cadastrar</input>
         </form>
     </body>
 

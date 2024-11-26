@@ -17,7 +17,7 @@ public class Empreendimento {
 
     @Id
     @Column(name = "COD_EMPREEDIMENTO", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso seja auto incrementado
+    @GeneratedValue(strategy = GenerationType.AUTO) // Caso seja auto incrementado
     private Integer codEmpreendimento;
 
     @Column(name = "DCR_EMPREENDIMENTO", length = 45)

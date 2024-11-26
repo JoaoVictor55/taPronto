@@ -15,7 +15,7 @@ public class Localidade {
 
     @Id
     @Column(name = "COD_LOCALIDADE", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso o código seja auto incrementado
+    @GeneratedValue(strategy = GenerationType.AUTO) // Caso o código seja auto incrementado
     private Integer codLocalidade;
 
     @Column(name = "DCR_LOCALIDADE", length = 45)

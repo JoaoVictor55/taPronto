@@ -15,7 +15,7 @@ public class EmpreendimentoFuncionario {
 
     @Id
     @Column(name = "COD_EMPREEND_FUNCIONARIO", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso seja auto incrementado
+    @GeneratedValue(strategy = GenerationType.AUTO) // Caso seja auto incrementado
     private Integer codEmpreendFuncionario;
 
     @Column(name = "TIP_FUNCIONARIO", length = 1)

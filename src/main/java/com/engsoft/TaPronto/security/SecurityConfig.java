@@ -1,5 +1,7 @@
 package com.engsoft.TaPronto.security;
 
+import com.engsoft.TaPronto.repository.empreendimentoFuncionario.FuncionarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,6 +18,14 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
+
+    FuncionarioRepositoryServices funcionarioRepositoryServices;
+
+    @Autowired
+    public SecurityConfig(FuncionarioRepositoryServices funcionarioRepositoryServices){
+
+        this.funcionarioRepositoryServices = funcionarioRepositoryServices;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,21 +45,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, MvcRequestMatcher.Builder mvcRequestMatcher) throws Exception{
 
-        return httpSecurity.authorizeHttpRequests((authorize)->{
+        /*return httpSecurity.authorizeHttpRequests((authorize)->{
             authorize.anyRequest().permitAll();
-        }).build();
+        }).build();*/
 
-       /* return httpSecurity.authorizeHttpRequests((authorize)->{
-            authorize.requestMatchers(mvcRequestMatcher.pattern("/")).permitAll();
+        return httpSecurity.authorizeHttpRequests((authorize)->{
+            authorize.requestMatchers(mvcRequestMatcher.pattern("/")).permitAll()
+                    .requestMatchers(mvcRequestMatcher.pattern("/cadastro")).permitAll();
         }).formLogin((formlogin)->{
             formlogin.loginPage("/login")
                     .loginProcessingUrl("/login")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/cadastrar_empreendimento")
+                    .usernameParameter("dcrEmail")
+                    .passwordParameter("senhaFuncionario")
+                    .defaultSuccessUrl("/")
+                    .failureForwardUrl("/erro")
                     .permitAll();
 
-        }).build();*/
+        }).build();/**/
     }
 
 }

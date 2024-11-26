@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>TaPronto - Login</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <div th:src="${error}">Unable to login, check your username and passowrd</div>
+        <form method="post" th:action="@{/login}" id="loginForm">
+            <label for="dcrEmail">Email:</label>
+            <input type="email" name="dcrEmail" id="dcrEmail"/><br/>
+
+            <label for="senhaFuncionario">Senha:</label>
+            <input type="password" name="senhaFuncionario" id="senhaFuncionario"/><br/>
+
+            <input type="submit" value="login"/>
+        </form>
+    </main>
+
+    <footer>
+        <a th:href="@{cadastro}">Quero me cadastrar como empreendedor</a>
+    </footer>
+</body>
+
+</html>

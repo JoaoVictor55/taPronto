@@ -14,27 +14,30 @@ import java.util.List;
 @Data
 @Table(name = "FUNCIONARIO", schema = "IFOODSOCIAL")
 @NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Setter
 @Getter
 public class Funcionario implements UserDetails {
 
     @Id
-    @Column(name = "COD_FUNCIONARIO", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso seja auto incrementado
+    @Column(name = "COD_FUNCIONARIO", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer codFuncionario;
 
-    @Column(name = "senha_usuario")
-    private final String senhaUsuario;
+    @Column(name = "SENHA_FUNCIONARIO")
+    private final String senhaFuncionario;
 
     @Column(name = "NOME_FUNCIONARIO", length = 45)
-    private String nomeFuncionario;
+    private final String nomeFuncionario;
 
     @Column(name = "NUM_TELEFONE", length = 15)
-    private String numTelefone;
+    private final String numTelefone;
 
     @Column(name = "DCR_EMAIL", length = 45)
-    private String dcrEmail;
+    private final String dcrEmail;
+
+    @Column(name = "DCR_CPF", length = 45)
+    private String dcrCpf;
 
     @Override
     public String toString() {
@@ -53,7 +56,7 @@ public class Funcionario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.senhaUsuario;
+        return this.senhaFuncionario;
     }
 
     @Override

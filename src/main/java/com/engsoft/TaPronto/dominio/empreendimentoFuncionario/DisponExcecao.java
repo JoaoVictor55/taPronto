@@ -18,7 +18,7 @@ public class DisponExcecao {
 
     @Id
     @Column(name = "COD_DISPON_EXCECAO", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso seja auto incrementado
+    @GeneratedValue(strategy = GenerationType.AUTO) // Caso seja auto incrementado
     private Integer codDisponExcecao;
 
     @Column(name = "DATA_EXCECAO")

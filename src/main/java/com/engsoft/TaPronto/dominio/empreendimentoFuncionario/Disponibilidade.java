@@ -19,7 +19,7 @@ public class Disponibilidade {
 
     @Id
     @Column(name = "COD_DISPONIBILIDADE", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Caso seja auto incrementado
+    @GeneratedValue(strategy = GenerationType.AUTO) // Caso seja auto incrementado
     private Integer codDisponibilidade;
 
     @Column(name = "NUM_DIA_SEMANA")
