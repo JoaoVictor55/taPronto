@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -60,6 +61,7 @@ public class SecurityConfig {
                             .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                             .requestMatchers(mvcRequestMatcher.pattern("/")).permitAll()
                             .requestMatchers(mvcRequestMatcher.pattern("/cadastro")).permitAll()
+                            .requestMatchers(mvcRequestMatcher.pattern("/cadastro_empreendimento")).permitAll()
                             .anyRequest().authenticated(); // Requer autenticação para todas as outras rotas
                 })
                 .formLogin((formlogin) -> {
@@ -70,9 +72,11 @@ public class SecurityConfig {
                             .passwordParameter("senhaFuncionario")
                             .defaultSuccessUrl("/")
                             .failureForwardUrl("/erro")
+                            .failureUrl("/erro")
                             .permitAll();
                 })
                 .logout((logout) -> logout.permitAll()) // Libera logout para todos
+                .logout(LogoutConfigurer::permitAll) // Libera logout para todos
                 .build();
     }
 

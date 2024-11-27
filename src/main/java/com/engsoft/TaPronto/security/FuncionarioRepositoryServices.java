@@ -16,12 +16,13 @@ public class FuncionarioRepositoryServices implements UserDetailsService {
     @Autowired
     public FuncionarioRepositoryServices(FuncionarioRepository funcionarioRepository){
         this.funcionarioRepository = funcionarioRepository;
+
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        System.out.println(username);
+      //  System.out.println(username);
 
         Funcionario usuario = funcionarioRepository.findFuncionarioByDcrEmail(username);
 

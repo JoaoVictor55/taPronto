@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <title>Cadastre teu empreendimento</title>
+</head>
+<body>
+    <main>
+        <form method="POST" th:action="@{cadastro_empreendimento}">
+            <select th:field="*{cidades_disponiveis}">
+                <option th:each="cidade : ${cidades_disponiveis}" th:value="${cidade.codCidade}" th:text="${cidade.dcrCidade}" th:name="${cidade.codCidade}" th:id="${cidade.codCidade}"></option>
+            </select>
+            <select th:field="*{bairros_disponiveis}">
+                <option th:each="bairro : ${bairros_disponiveis}" th:value="${bairro.codBairro}" th:text="${bairro.dcrBairro}" th:name="${bairro.codBairro}" th:id="${bairro.codBairro}"></option>
+            </select>
+            <select th:field="*{localidades_disponiveis}">
+                <option th:each="localidade : ${localidades_disponiveis}" th:value="${localidade.codLocalidade}" th:text="${localidade.dcrLocalidade}" th:name="${localidade.codLocalidade}" th:id="${localidade.codLocalidade}"></option>
+            </select>
+            <button>Cadastrar</button>
+        </form>
+    </main>
+</body>
+<script>
+
+</script>
+</html>

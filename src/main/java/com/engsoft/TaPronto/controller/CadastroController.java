@@ -47,5 +47,7 @@ public class CadastroController {
         this.funcionarioRepository.save(formularioRegistro.paraFuncionario(this.passwordEncoder));
 
         return "redirect:/";
+        return "redirect:/cadastro_empreendimento";
     }
+
 }
