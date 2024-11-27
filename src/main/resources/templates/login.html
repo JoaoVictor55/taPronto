@@ -11,30 +11,41 @@
 
 <body class="principalLogin">
     <header class="cabecalho">
-        <h1>Entrar</h1>
+        <h2>Entrar</h2>
     </header>
 
     <main class="principal__container">
 
         <form method="post" th:action="@{/login}" id="loginForm" class="loginForm">
             <div class="input-container">
-                <label class="tituloForm" for="dcrEmail">Email:</label>
+                <label for="dcrEmail">EMAIL</label>
             </div>
+
             <div class="input-wrapper">
-                <input class="inputForm" type="email" name="dcrEmail" id="dcrEmail" /><br />
+                <input type="email" name="dcrEmail" id="dcrEmail" /><br />
             </div>
 
-            <label class="tituloForm" for="senhaFuncionario">Senha:</label>
-            <input class="inputForm" type="password" name="senhaFuncionario" id="senhaFuncionario" /><br />
+            <div class="input-container">
+                <label for="senhaFuncionario">SENHA</label>
+            </div>
 
-            <input type="submit" value="login" />
+            <div class="input-wrapper">
+                <input type="password" name="senhaFuncionario" id="senhaFuncionario" /><br />
+            </div>
+
+            <input class="botao__login" type="submit" value="ENTRAR" />
         </form>
 
         <div th:src="${error}">Unable to login, check your username and passowrd</div>
+        <div class="container__imagens">
+            <img class="redes-sociais" th:src="@{/images/social-icons.svg}" alt="Logo">
+        </div>
     </main>
 
     <footer>
-        <a th:href="@{cadastro}">Quero me cadastrar como empreendedor</a>
+        <a class="botao__cadastro-empreendedor" th:href="@{cadastro}">Quero me cadastrar como empreendedor</a>
+        <img class="rodape" th:src="@{/images/inicial-rodape2.svg}" alt="Logo">
+
     </footer>
 </body>
 

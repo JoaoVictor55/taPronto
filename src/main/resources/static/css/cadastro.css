@@ -80,13 +80,17 @@
 .redes-sociais{
   width: 50%;
 }
-.botao__cadastro-empreendedor{
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--cor-de-fonte);
-  font-family: var(--fonte-secundaria);
-  margin-top: 70%;
+.botao__cadastro{
+  padding: 1rem 10rem;
+    margin: .5rem .5rem .5rem 0.3rem;
+    text-decoration: none;
+    text-align: center;
+    color: var(--cor-secundaria2);
+    background: var(--cor-de-fundo3);
+    border-radius: 2rem;
+    font-family: var(--fonte-secundaria);
+    font-weight: 600;
+    
 }
 .rodape {
     height: auto;

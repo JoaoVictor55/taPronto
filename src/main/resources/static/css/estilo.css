@@ -6,10 +6,11 @@
 :root {
     --cor-de-fundo: #A658A1;
     --cor-de-fundo2: #F2C9E0;
+    --cor-de-fundo3:#590C29;
     --cor-de-titulo: rgb(166, 219, 255);
     --cor-de-fonte: #590C29;
     --cor-secundaria: rgb(0, 0, 0);
-    --cor-secundaria2: rgb(1, 10, 15);
+    --cor-secundaria2: rgb(240, 217, 217);
     --fonte-primaria: "Cinzel";
     --fonte-secundaria: "Poppins";
     --fonte-terciaria:"Josefin Sans";

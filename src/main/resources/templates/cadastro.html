@@ -2,35 +2,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
     <title>Bem-Vindo</title>
 </head>
 
-<body>
-    <h1>Cadastre-se</h1>
+<body class="principalLogin">
+    <header class="cabecalho">
+        <h1>Cadastre-se</h1>
+    </header>
+    <main class="principal__container">
+        <form method="POST" th:action="@{cadastro}">
+            <div class="input-container">
+                <label for="nomeFuncionario">Nome:</label>
+            </div>
 
-    <form method="POST" th:action="@{cadastro}">
+            <div class="input-wrapper">
+                <input type="text" id="nomeFuncionario" name="nomeFuncionario" /><br />
+            </div>
 
-        <label for="nomeFuncionario">Nome:</label>
-        <input type="text" id="nomeFuncionario" name="nomeFuncionario" /><br />
+            <div class="input-container">
+                <label for="dcrEmail">Email:</label>
+            </div>
 
-        <label for="dcrEmail">Email:</label>
-        <input type="text" id="dcrEmail" name="dcrEmail" /><br />
+            <div class="input-wrapper">
+                <input type="text" id="dcrEmail" name="dcrEmail" /><br />
+            </div>
 
-        <label for="dcrCpf">CPF:</label>
-        <input type="text" id="dcrCpf" name="dcrCpf" /><br />
+            <div class="input-container">
+                <label for="dcrCpf">CPF:</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="dcrCpf" name="dcrCpf" /><br />
+            </div>
 
-        <label for="numTelefone">Telefone:</label>
-        <input type="text" id="numTelefone" name="numTelefone" /><br />
+            <div class="input-container">
+                <label for="numTelefone">Telefone:</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="numTelefone" name="numTelefone" /><br />
+            </div>
 
-        <label for="senhaFuncionario">Senha:</label>
-        <input type="password" id="senhaFuncionario" name="senhaFuncionario" /><br />
+            <div class="input-container">
+                <label for="senhaFuncionario">Senha:</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="password" id="senhaFuncionario" name="senhaFuncionario" /><br />
+            </div>
 
-        <label for="senhaConfirma">Confirme a senha:</label>
-        <input type="password" id="senhaConfirma" name="senhaConfirma" /><br />
-
-        <input type="submit">Cadastrar</input>
-    </form>
+            <div class="input-container">
+                <label for="senhaConfirma">Confirme a senha:</label>
+            </div>
+            <div class="input-wrapper">
+                <input type="password" id="senhaConfirma" name="senhaConfirma" /><br />
+            </div>
+        </form>
+        <div class="container__imagens">
+            <img class="redes-sociais" th:src="@{/images/social-icons.svg}" alt="Logo">
+        </div>
+    </main>
+    <footer>
+        <button class="botao__cadastro" type="submit">Cadastrar</buton>
+            <img class="rodape" th:src="@{/images/inicial-rodape2.svg}" alt="Logo">
+    </footer>
 </body>
 
 </html>
