@@ -1,10 +1,8 @@
 package com.engsoft.TaPronto.controller;
 
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Empreendimento;
 import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.FormularioRegistro;
-import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Funcionario;
-import com.engsoft.TaPronto.dominio.endereco.Localidade;
 import com.engsoft.TaPronto.repository.empreendimentoFuncionario.FuncionarioRepository;
-import com.engsoft.TaPronto.repository.endereco.LocalidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
@@ -14,23 +12,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping("/cadastro")
-public class CadastroController {
+public class CadastroFuncionarioController {
 
     private FuncionarioRepository funcionarioRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    CadastroController(FuncionarioRepository funcionarioRepository, PasswordEncoder passwordEncoder){
+    CadastroFuncionarioController(FuncionarioRepository funcionarioRepository, PasswordEncoder passwordEncoder){
 
         this.funcionarioRepository = funcionarioRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
 
 
     @GetMapping
@@ -46,7 +40,6 @@ public class CadastroController {
 
         this.funcionarioRepository.save(formularioRegistro.paraFuncionario(this.passwordEncoder));
 
-        return "redirect:/";
         return "redirect:/cadastro_empreendimento";
     }
 

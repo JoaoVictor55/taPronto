@@ -10,16 +10,38 @@
 </head>
 <body>
     <main>
-        <form method="POST" th:action="@{cadastro_empreendimento}">
-            <select th:field="*{cidades_disponiveis}">
-                <option th:each="cidade : ${cidades_disponiveis}" th:value="${cidade.codCidade}" th:text="${cidade.dcrCidade}" th:name="${cidade.codCidade}" th:id="${cidade.codCidade}"></option>
+        <form method="post" th:action="@{/logout}">
+            <label for="sair">Sair:</label>
+            <input type="submit" name="sair" id="sair" value="Logout"/>
+        </form>
+
+        <form method="POST" th:action="@{cadastro_empreendimento}"  th:object="${empreendimento}">
+
+
+            <label for="dcrNomeFantasia">Digite o nome fantasia do empreendimento</label>
+            <input type="text" th:field="*{dcrNomeFantasia}" name="dcrNomeFantasia" id="dcrNomeFantasia">
+
+            <label for="dcrEndereco">Digite o endereço do empreendimento</label>
+            <input type="text" th:field="*{dcrEndereco}" name="dcrEndereco" id="dcrEndereco">
+
+            <label for="dcrComplemento">Digite o complemento do empreendimento</label>
+            <input type="text" th:field="*{dcrComplemento}" name="dcrComplemento" id="dcrComplemento">
+
+            <label for="numCep">Digite o CEP do empreendimento</label>
+            <input type="number" th:field="*{numCep}" name="numCep" id="numCep">
+
+            <select th:object="${empreendimento}" th:field="*{cidade}">
+                <option th:each="c : ${cidade}" th:value="${c.codCidade}" th:text="${c.dcrCidade}" th:name="${c.codCidade}" th:id="${c.codCidade}"></option>
             </select>
-            <select th:field="*{bairros_disponiveis}">
-                <option th:each="bairro : ${bairros_disponiveis}" th:value="${bairro.codBairro}" th:text="${bairro.dcrBairro}" th:name="${bairro.codBairro}" th:id="${bairro.codBairro}"></option>
+
+            <select th:field="*{bairro}">
+                <option th:each="b : ${bairro}" th:value="${b.codBairro}" th:text="${b.dcrBairro}" th:name="${b.codBairro}" th:id="${b.codBairro}"></option>
             </select>
-            <select th:field="*{localidades_disponiveis}">
-                <option th:each="localidade : ${localidades_disponiveis}" th:value="${localidade.codLocalidade}" th:text="${localidade.dcrLocalidade}" th:name="${localidade.codLocalidade}" th:id="${localidade.codLocalidade}"></option>
+
+            <select th:field="*{localidade}">
+                <option th:each="l : ${localidade}" th:value="${l.codLocalidade}" th:text="${l.dcrLocalidade}" th:name="${l.codLocalidade}" th:id="${l.codLocalidade}"></option>
             </select>
+
             <button>Cadastrar</button>
         </form>
     </main>

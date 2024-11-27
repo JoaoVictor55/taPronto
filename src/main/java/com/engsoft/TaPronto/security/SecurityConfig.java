@@ -71,12 +71,12 @@ public class SecurityConfig {
                             .usernameParameter("dcrEmail")
                             .passwordParameter("senhaFuncionario")
                             .defaultSuccessUrl("/")
-                            .failureForwardUrl("/erro")
                             .failureUrl("/erro")
                             .permitAll();
                 })
-                .logout((logout) -> logout.permitAll()) // Libera logout para todos
-                .logout(LogoutConfigurer::permitAll) // Libera logout para todos
+                .logout((logout) ->{
+                    logout.logoutSuccessUrl("/").permitAll();
+                })
                 .build();
     }
 

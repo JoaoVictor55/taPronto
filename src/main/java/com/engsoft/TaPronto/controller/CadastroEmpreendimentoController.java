@@ -1,7 +1,7 @@
 package com.engsoft.TaPronto.controller;
 
+import com.engsoft.TaPronto.Service.EmpreendimentoService;
 import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Empreendimento;
-import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.EmpreendimentoFuncionario;
 import com.engsoft.TaPronto.dominio.endereco.Bairro;
 import com.engsoft.TaPronto.dominio.endereco.Cidade;
 import com.engsoft.TaPronto.dominio.endereco.Localidade;
@@ -22,22 +22,27 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/cadastro_empreendimento")
-public class CadastroEmpreendimento {
+public class CadastroEmpreendimentoController {
 
-    private EmpreendimentoRepository empreendimentoRepository;
+    private EmpreendimentoService empreendimentoService;
     private CidadeRepository cidadeRepository;
     private BairroRepository bairroRepository;
     private LocalidadeRepository localidadeRepository;
 
     @Autowired
-    public CadastroEmpreendimento(EmpreendimentoRepository empreendimentoRepository, CidadeRepository cidadeRepository,
-                              BairroRepository bairroRepository, LocalidadeRepository localidadeRepository){
+    public CadastroEmpreendimentoController(EmpreendimentoService empreendimentoService, CidadeRepository cidadeRepository,
+                                            BairroRepository bairroRepository, LocalidadeRepository localidadeRepository){
 
-        this.empreendimentoRepository = empreendimentoRepository;
+        this.empreendimentoService = empreendimentoService;
         this.cidadeRepository = cidadeRepository;
         this.bairroRepository = bairroRepository;
         this.localidadeRepository = localidadeRepository;
 
+    }
+
+    @ModelAttribute("empreendimento")
+    public Empreendimento empreendimento(){
+        return  new Empreendimento();
     }
 
     @GetMapping
@@ -51,9 +56,9 @@ public class CadastroEmpreendimento {
         this.bairroRepository.findAll().forEach(bairros::add);
         this.localidadeRepository.findAll().forEach(localidades::add);
 
-        model.addAttribute("cidades_disponiveis", cidades);
-        model.addAttribute("bairros_disponiveis", bairros);
-        model.addAttribute("localidades_disponiveis", localidades);
+        model.addAttribute("cidade", cidades);
+        model.addAttribute("bairro", bairros);
+        model.addAttribute("localidade", localidades);
 
         return "cadastro_empreendimento";
 
@@ -62,7 +67,9 @@ public class CadastroEmpreendimento {
     @PostMapping
     public String processarCadastroEmpreendimento(Empreendimento empreendimento){
 
-        return "";
+        System.out.println(empreendimento);
+        this.empreendimentoService.save(empreendimento);
+        return "redirect:/";
     }
 
 }

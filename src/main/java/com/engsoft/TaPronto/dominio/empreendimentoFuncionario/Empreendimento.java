@@ -2,10 +2,7 @@ package com.engsoft.TaPronto.dominio.empreendimentoFuncionario;
 
 import jakarta.persistence.*;
 import com.engsoft.TaPronto.dominio.endereco.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "EMPREENDIMENTO", schema = "IFOODSOCIAL")
@@ -13,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Empreendimento {
 
     @Id
