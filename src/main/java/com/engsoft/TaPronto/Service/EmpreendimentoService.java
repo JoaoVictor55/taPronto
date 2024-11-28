@@ -52,8 +52,8 @@ public class EmpreendimentoService {
         }
         else{
 
-            this.empreendimentoRepository.save(empreendimento);
-            //System.out.println(empreendimento);
+            //this.empreendimentoRepository.save(empreendimento);
+            System.out.println(empreendimento);
         }
 
                 //Objects.equals(bairro.getCidade().getCodCidade(), cidade.getCodCidade())

@@ -22,7 +22,8 @@ public class TaProntoApplication implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 
 		registry.addViewController("/").setViewName("home"); // exibe a tela inicial
-		registry.addViewController("/login"); // exibe a tela de login
+		//registry.addViewController("/login");// exibe a tela de login
+		//registry.addViewController("/erro_login");
 	}
 
 }

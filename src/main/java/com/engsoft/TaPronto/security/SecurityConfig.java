@@ -70,8 +70,8 @@ public class SecurityConfig {
                             .loginProcessingUrl("/login")
                             .usernameParameter("dcrEmail")
                             .passwordParameter("senhaFuncionario")
-                            .defaultSuccessUrl("/")
-                            .failureUrl("/erro")
+                            .defaultSuccessUrl("/cadastro_empreendimento")
+                            .failureUrl("/login/erro")
                             .permitAll();
                 })
                 .logout((logout) ->{

@@ -35,15 +35,14 @@
 
             <input class="botao__login" type="submit" value="ENTRAR" />
         </form>
-
-        <div th:src="${error}">Unable to login, check your username and passowrd</div>
+        <div th:if="${mensagem_erro}" th:text="${mensagem_erro}"></div>
         <div class="container__imagens">
             <img class="redes-sociais" th:src="@{/images/social-icons.svg}" alt="Logo">
         </div>
     </main>
 
     <footer>
-        <a class="botao__cadastro-empreendedor" th:href="@{cadastro}">Quero me cadastrar como empreendedor</a>
+        <a class="botao__cadastro-empreendedor" th:href="@{/cadastro}">Quero me cadastrar como empreendedor</a>
         <img class="rodape" th:src="@{/images/inicial-rodape2.svg}" alt="Logo">
 
     </footer>
