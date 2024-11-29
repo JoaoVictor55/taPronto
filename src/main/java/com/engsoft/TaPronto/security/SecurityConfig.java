@@ -48,12 +48,6 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, MvcRequestMatcher.Builder mvcRequestMatcher)
             throws Exception {
 
-        /*
-         * return httpSecurity.authorizeHttpRequests((authorize)->{
-         * authorize.anyRequest().permitAll();
-         * }).build();
-         */
-
         return httpSecurity
                 .authorizeHttpRequests((authorize) -> {
                     // Libera acesso aos arquivos estáticos

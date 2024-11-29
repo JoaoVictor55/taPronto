@@ -68,9 +68,9 @@ public class CadastroEmpreendimentoController {
     @PostMapping
     public String processarCadastroEmpreendimento(Empreendimento empreendimento) {
 
-        System.out.println(empreendimento);
+        System.out.println("opa");
         this.empreendimentoService.save(empreendimento);
-        return "redirect/cadastro_empreendimento_sucesso";
+        return "redirect:/cadastro_empreendimento_sucesso";
     }
 
 }

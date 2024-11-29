@@ -34,6 +34,7 @@ public class LoginController {
             if(excecao != null){
                 mensagemErro = excecao.getMessage();
             }
+
         }
 
         model.addAttribute("mensagem_erro", mensagemErro);
