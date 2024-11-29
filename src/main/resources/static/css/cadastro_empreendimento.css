@@ -1,0 +1,67 @@
+.container__imagem{
+    display: block;
+    justify-content: center;
+}
+.perfil{
+    margin-top: .5rem;
+    width: 95%;
+}
+.adicionar-foto{
+    margin-top:2rem;
+    width: 30%;
+}
+
+figure {
+    text-align: center; 
+    margin: 0;
+}
+  
+figcaption {
+    color: var(--cor-secundaria); 
+  }
+.legenda{
+    font-size: 12px;
+
+    margin: .5rem 0 3rem 0;
+    font-family: var(--fonte-secundaria);
+  }
+.container__select{
+    display: grid;
+    justify-content: center;
+  }
+
+  .loja{
+    margin: 0 1rem .9rem;
+    padding: 1rem 0rem .5rem 0;
+  }
+  .loja__cep{
+    margin-bottom: 0.5rem;
+  }
+
+.select{
+    font-family: var(--fonte-secundaria);
+    text-decoration: none;
+    background-color: var(--cor-de-fundo2);
+    border-radius: 2rem;
+    border: 2px solid var(--cor-de-fonte);
+    padding: 1rem 4.1rem;
+    margin: .5rem 0;
+
+    text-align: center;
+  }
+.sair{
+    text-decoration: none;
+    text-align: end;
+    color: var(--cor-de-fonte);
+    font-family: var(--fonte-secundaria);
+}
+.bnt__sair{
+    text-decoration: none;
+    background-color: var(--cor-de-fundo2);
+    border-radius: 1rem;
+    border: 2px solid var(--cor-de-fonte);
+
+    color: var(--cor-de-fonte);
+    font-family: var(--fonte-secundaria);
+    text-align: center;
+}

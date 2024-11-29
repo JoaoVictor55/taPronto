@@ -30,8 +30,9 @@ public class CadastroEmpreendimentoController {
     private LocalidadeRepository localidadeRepository;
 
     @Autowired
-    public CadastroEmpreendimentoController(EmpreendimentoService empreendimentoService, CidadeRepository cidadeRepository,
-                                            BairroRepository bairroRepository, LocalidadeRepository localidadeRepository){
+    public CadastroEmpreendimentoController(EmpreendimentoService empreendimentoService,
+            CidadeRepository cidadeRepository,
+            BairroRepository bairroRepository, LocalidadeRepository localidadeRepository) {
 
         this.empreendimentoService = empreendimentoService;
         this.cidadeRepository = cidadeRepository;
@@ -41,15 +42,15 @@ public class CadastroEmpreendimentoController {
     }
 
     @ModelAttribute("empreendimento")
-    public Empreendimento empreendimento(){
-        return  new Empreendimento();
+    public Empreendimento empreendimento() {
+        return new Empreendimento();
     }
 
     @GetMapping
-    public String exibirFormularioCadastroEmpreendimento(Model model){
+    public String exibirFormularioCadastroEmpreendimento(Model model) {
 
         List<Cidade> cidades = new ArrayList<>();
-        List<Bairro> bairros  = new ArrayList<>();
+        List<Bairro> bairros = new ArrayList<>();
         List<Localidade> localidades = new ArrayList<>();
 
         this.cidadeRepository.findAll().forEach(cidades::add);
@@ -65,11 +66,11 @@ public class CadastroEmpreendimentoController {
     }
 
     @PostMapping
-    public String processarCadastroEmpreendimento(Empreendimento empreendimento){
+    public String processarCadastroEmpreendimento(Empreendimento empreendimento) {
 
         System.out.println(empreendimento);
         this.empreendimentoService.save(empreendimento);
-        return "redirect:/";
+        return "redirect/cadastro_empreendimento_sucesso";
     }
 
 }

@@ -10,45 +10,78 @@
     <title>Cadastre teu empreendimento</title>
 </head>
 
-<body>
+<body class="principalLogin">
+    <header>
+        <div class="container__imagem">
+            <img class="perfil" th:src="@{/images/perfil.svg}" alt="Logo">
+        </div>
+
+        <figure>
+            <img class="adicionar-foto" th:src="@{/images/nova-foto.svg}" alt="Logo">
+            <figcaption>
+                <h3 class="legenda">ADICIONAR LOGO DA LOJA</h3>
+            </figcaption>
+        </figure>
+    </header>
+
     <main>
         <form method="POST" th:action="@{cadastro_empreendimento}" th:object="${empreendimento}">
+            <div class="input-container">
+                <label for="dcrNomeFantasia">NOME FANTASIA</label>
+            </div>
+            <div class="input-wrapper loja">
+                <input type="text" th:field="*{dcrNomeFantasia}" name="dcrNomeFantasia" id="dcrNomeFantasia">
+            </div>
 
+            <div class="input-container ">
+                <label for="dcrEndereco">ENDEREÇO</label>
+            </div>
+            <div class="input-wrapper loja">
+                <input type="text" th:field="*{dcrEndereco}" name="dcrEndereco" id="dcrEndereco">
+            </div>
 
-            <label for="dcrNomeFantasia">Digite o nome fantasia do empreendimento</label>
-            <input type="text" th:field="*{dcrNomeFantasia}" name="dcrNomeFantasia" id="dcrNomeFantasia">
+            <div class="input-container">
+                <label for="dcrComplemento">COMPLEMENTO</label>
+            </div>
+            <div class="input-wrapper loja">
+                <input type="text" th:field="*{dcrComplemento}" name="dcrComplemento" id="dcrComplemento">
+            </div>
 
-            <label for="dcrEndereco">Digite o endereço do empreendimento</label>
-            <input type="text" th:field="*{dcrEndereco}" name="dcrEndereco" id="dcrEndereco">
+            <div class="input-container">
+                <label for="numCep">CEP</label>
+            </div>
+            <div class="input-wrapper loja loja__cep">
+                <input type="number" th:field="*{numCep}" name="numCep" id="numCep">
+            </div>
 
-            <label for="dcrComplemento">Digite o complemento do empreendimento</label>
-            <input type="text" th:field="*{dcrComplemento}" name="dcrComplemento" id="dcrComplemento">
+            <div class="container__select">
 
-            <label for="numCep">Digite o CEP do empreendimento</label>
-            <input type="number" th:field="*{numCep}" name="numCep" id="numCep">
+                <select class="select" th:field="*{localidade}">
+                    <option th:each="l : ${localidade}" th:value="${l.codLocalidade}" th:text="${l.dcrLocalidade}"
+                        th:name="${l.codLocalidade}" th:id="${l.codLocalidade}"></option>
+                </select>
+                <select class="select" th:field="*{bairro}">
+                    <option th:each="b : ${bairro}" th:value="${b.codBairro}" th:text="${b.dcrBairro}"
+                        th:name="${b.codBairro}" th:id="${b.codBairro}"></option>
+                </select>
 
-            <select th:object="${empreendimento}" th:field="*{cidade}">
-                <option th:each="c : ${cidade}" th:value="${c.codCidade}" th:text="${c.dcrCidade}"
-                    th:name="${c.codCidade}" th:id="${c.codCidade}"></option>
-            </select>
+                <select class="select" th:object="${empreendimento}" th:field="*{cidade}">
+                    <option th:each="c : ${cidade}" th:value="${c.codCidade}" th:text="${c.dcrCidade}"
+                        th:name="${c.codCidade}" th:id="${c.codCidade}"></option>
+                </select>
+            </div>
 
-            <select th:field="*{bairro}">
-                <option th:each="b : ${bairro}" th:value="${b.codBairro}" th:text="${b.dcrBairro}"
-                    th:name="${b.codBairro}" th:id="${b.codBairro}"></option>
-            </select>
-
-            <select th:field="*{localidade}">
-                <option th:each="l : ${localidade}" th:value="${l.codLocalidade}" th:text="${l.dcrLocalidade}"
-                    th:name="${l.codLocalidade}" th:id="${l.codLocalidade}"></option>
-            </select>
-
-            <button>Cadastrar</button>
+            <button class="botao__cadastro">Cadastrar</button>
         </form>
-        <form method="post" th:action="@{/logout}">
+        <form class="sair" method="post" th:action="@{/logout}">
             <label for="sair">Sair:</label>
-            <input type="submit" name="sair" id="sair" value="Logout" />
+            <input class="bnt__sair" type="submit" name="sair" id="sair" value="Logout" />
         </form>
     </main>
+    <footer>
+        <img class="rodape" th:src="@{/images/inicial-rodape2.svg}" alt="Logo">
+    </footer>
+
 </body>
 <script>
 
