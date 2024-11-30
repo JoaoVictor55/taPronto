@@ -1,6 +1,8 @@
 package com.engsoft.TaPronto.Service;
 
 import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Empreendimento;
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.EmpreendimentoFuncionario;
+import com.engsoft.TaPronto.dominio.empreendimentoFuncionario.Funcionario;
 import com.engsoft.TaPronto.dominio.endereco.Bairro;
 import com.engsoft.TaPronto.dominio.endereco.Cidade;
 import com.engsoft.TaPronto.dominio.endereco.Localidade;
@@ -12,8 +14,10 @@ import org.hibernate.engine.jdbc.env.spi.SQLStateType;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.naming.AuthenticationException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
@@ -22,11 +26,12 @@ import java.util.Objects;
 public class EmpreendimentoService {
 
     private EmpreendimentoRepository empreendimentoRepository;
+    private EmpreendimentoFuncionarioService empreendimentoFuncionarioService;
 
     @Autowired
-    public EmpreendimentoService(EmpreendimentoRepository empreendimentoRepository){
+    public EmpreendimentoService(EmpreendimentoRepository empreendimentoRepository, EmpreendimentoFuncionarioService empreendimentoFuncionarioService){
         this.empreendimentoRepository = empreendimentoRepository;
-
+        this.empreendimentoFuncionarioService = empreendimentoFuncionarioService;
 
     }
 
@@ -53,6 +58,8 @@ public class EmpreendimentoService {
         else{
 
             this.empreendimentoRepository.save(empreendimento);
+
+            this.empreendimentoFuncionarioService.vincularDonoAEmpreendimento(empreendimento);
            // System.out.println(empreendimento);
         }
 
