@@ -11,13 +11,26 @@
 </head>
 
 <body>
+    <header>
+        <div class="container__imagem">
+            <img class="perfil" th:src="@{/images/concluido.svg}" alt="Logo">
+        </div>
+    </header>
     <main>
-        <h1>Cadastro Salvo com sucesso!</h1>
-        <form class="sair" method="post" th:action="@{/logout}">
-            <label for="sair">Sair:</label>
-            <input class="bnt__sair" type="submit" name="sair" id="sair" value="Logout" />
-        </form>
+        <figure>
+            <img class="cadastro-salvo" th:src="@{/images/concluido-icon.svg}" alt="Logo">
+            <figcaption>
+                <h3 class="legenda-sucesso">Cadastro salvo com sucesso!</h3>
+            </figcaption>
+        </figure>
+        
     </main>
+    <footer>
+        <form class="sair" method="post" th:action="@{/logout}">
+            <input class="botao__cadastro bnt-sair" type="submit" name="sair" id="sair" value="Sair" />
+            <img class="rodape" th:src="@{/images/inicial-rodape.svg}" alt="Logo">
+        </form>
+    </footer>
 </body>
 
 </html>

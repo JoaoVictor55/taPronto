@@ -1,0 +1,23 @@
+.cadastro-salvo{
+    width: 50%;
+    margin-top: 30%;
+}
+.legenda-sucesso{
+    color: var(--cor-secundaria2);
+    font-family: var(--fonte-secundaria);
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sair{
+    display: flex;
+    justify-content: center;
+}
+.bnt-sair{
+    text-decoration: none;
+    color: var(--cor-secundaria2);
+    font-family: var(--fonte-secundaria);
+    margin-top: 75%;
+}
