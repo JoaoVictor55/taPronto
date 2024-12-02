@@ -44,8 +44,7 @@ public class CadastroEmpreendimentoController {
     }
 
     @PostMapping
-    public String processarCadastroEmpreendimento(Empreendimento empreendimento,
-                                                  HttpRequest request) {
+    public String processarCadastroEmpreendimento(Empreendimento empreendimento) {
 
         this.empreendimentoService.save(empreendimento);
         return "redirect:/cadastro_empreendimento_sucesso";
