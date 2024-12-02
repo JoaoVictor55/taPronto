@@ -27,7 +27,7 @@ public class FuncionarioRepositoryServices implements UserDetailsService {
         Funcionario usuario = funcionarioRepository.findFuncionarioByDcrEmail(username);
 
         if(usuario == null){
-            throw new UsernameNotFoundException("Username: "+username+" wasn't found");
+            throw new UsernameNotFoundException("O nome de usuário: "+username+" não foi encontrado");
         }
         return  usuario;
     }

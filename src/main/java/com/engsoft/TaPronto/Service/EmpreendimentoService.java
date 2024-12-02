@@ -46,9 +46,9 @@ public class EmpreendimentoService {
         Bairro bairro = empreendimento.getBairro();
         Cidade cidade = empreendimento.getCidade();
 
-
         Boolean localidadeEhDoBairro = Objects.equals(localidade.getBairro().getCodBairro(), bairro.getCodBairro());
         Boolean bairroEhDaCidade = Objects.equals(bairro.getCidade().getCodCidade(), cidade.getCodCidade());
+
         if(!localidadeEhDoBairro || ! bairroEhDaCidade){
 
             throw new IllegalArgumentException(
@@ -60,9 +60,9 @@ public class EmpreendimentoService {
             this.empreendimentoRepository.save(empreendimento);
 
             this.empreendimentoFuncionarioService.vincularDonoAEmpreendimento(empreendimento);
-           // System.out.println(empreendimento);
+
         }
 
-                //Objects.equals(bairro.getCidade().getCodCidade(), cidade.getCodCidade())
+
     }
 }

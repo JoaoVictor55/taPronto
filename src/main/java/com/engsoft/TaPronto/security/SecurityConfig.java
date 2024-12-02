@@ -55,8 +55,6 @@ public class SecurityConfig {
                             .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                             .requestMatchers(mvcRequestMatcher.pattern("/")).permitAll()
                             .requestMatchers(mvcRequestMatcher.pattern("/cadastro")).permitAll()
-                            .requestMatchers(mvcRequestMatcher.pattern("/cadastro_empreendimento")).permitAll()
-                            .requestMatchers(mvcRequestMatcher.pattern("/cadastro_empreendimento_sucesso")).permitAll()
                             .anyRequest().authenticated(); // Requer autenticação para todas as outras rotas
                 })
                 .formLogin((formlogin) -> {
@@ -69,7 +67,7 @@ public class SecurityConfig {
                             .failureUrl("/login/erro")
                             .permitAll();
                 })
-                .logout((logout) ->{
+                .logout((logout) ->{    
                     logout.logoutSuccessUrl("/").permitAll();
                 })
                 .build();

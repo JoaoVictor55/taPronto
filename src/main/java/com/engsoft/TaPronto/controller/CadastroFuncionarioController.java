@@ -36,11 +36,10 @@ public class CadastroFuncionarioController {
     @PostMapping
     public String processarCadastro(FormularioRegistro formularioRegistro){
 
-        //System.out.println(formularioRegistro);
+
 
         this.funcionarioRepository.save(formularioRegistro.paraFuncionario(this.passwordEncoder));
 
         return "redirect:/cadastro_empreendimento";
     }
-
 }

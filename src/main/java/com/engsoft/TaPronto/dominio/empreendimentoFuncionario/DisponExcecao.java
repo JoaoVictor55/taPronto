@@ -40,8 +40,6 @@ public class DisponExcecao {
     @ManyToOne
     @JoinColumn(name = "COD_LOCALIDADE", nullable = false, referencedColumnName = "COD_LOCALIDADE")
     private Localidade localidade;
-
-
 }
 
 

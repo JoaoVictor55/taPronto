@@ -9,6 +9,7 @@ import com.engsoft.TaPronto.repository.empreendimentoFuncionario.EmpreendimentoR
 import com.engsoft.TaPronto.repository.endereco.BairroRepository;
 import com.engsoft.TaPronto.repository.endereco.CidadeRepository;
 import com.engsoft.TaPronto.repository.endereco.LocalidadeRepository;
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,14 @@ public class CadastroEmpreendimentoController {
 
     }
 
+    @PostMapping
+    public String processarCadastroEmpreendimento(Empreendimento empreendimento,
+                                                  HttpRequest request) {
+
+        this.empreendimentoService.save(empreendimento);
+        return "redirect:/cadastro_empreendimento_sucesso";
+    }
+
     @ModelAttribute("empreendimento")
     public Empreendimento empreendimento() {
         return new Empreendimento();
@@ -50,27 +60,19 @@ public class CadastroEmpreendimentoController {
     public String exibirFormularioCadastroEmpreendimento(Model model) {
 
         List<Cidade> cidades = new ArrayList<>();
-        List<Bairro> bairros = new ArrayList<>();
-        List<Localidade> localidades = new ArrayList<>();
-
         this.cidadeRepository.findAll().forEach(cidades::add);
-        this.bairroRepository.findAll().forEach(bairros::add);
-        this.localidadeRepository.findAll().forEach(localidades::add);
-
         model.addAttribute("cidade", cidades);
+
+        List<Bairro> bairros = new ArrayList<>();
+        this.bairroRepository.findAll().forEach(bairros::add);
         model.addAttribute("bairro", bairros);
+
+        List<Localidade> localidades = new ArrayList<>();
+        this.localidadeRepository.findAll().forEach(localidades::add);
         model.addAttribute("localidade", localidades);
 
         return "cadastro_empreendimento";
 
-    }
-
-    @PostMapping
-    public String processarCadastroEmpreendimento(Empreendimento empreendimento) {
-
-        System.out.println("opa");
-        this.empreendimentoService.save(empreendimento);
-        return "redirect:/cadastro_empreendimento_sucesso";
     }
 
 }

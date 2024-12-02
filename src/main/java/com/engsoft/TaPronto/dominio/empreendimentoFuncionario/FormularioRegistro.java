@@ -15,6 +15,8 @@ public class FormularioRegistro {
     private String dcrCpf;
 
     public Funcionario paraFuncionario(PasswordEncoder passwordEncoder){
-        return new Funcionario(passwordEncoder.encode(senhaFuncionario), nomeFuncionario, numTelefone, dcrEmail);
+        return new Funcionario(passwordEncoder.encode(senhaFuncionario), nomeFuncionario, numTelefone,
+                dcrEmail);
     }
 }
+
